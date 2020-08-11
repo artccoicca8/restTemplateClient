@@ -43,8 +43,8 @@ public class CartController {
 		logger.info("versioningRequestBean : {} ", rq);
 
 		try {
-			//resultVersioning = service.postVersioning(versioningRequestBean);
-			service.postDS();
+			resultVersioning = service.postVersioning(versioningRequestBean);
+//			service.postDS();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

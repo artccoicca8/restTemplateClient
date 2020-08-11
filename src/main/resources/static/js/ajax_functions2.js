@@ -7,9 +7,13 @@
 	       if (cboText == "LOCAL" ||cboText == "Multimarca" ) {
 	    	   $("#acctNumber").val("374641000000009");
 	    	   $("#accMerchantId").val("9876543210001");
-      }else {
-    	  $("#acctNumber").val("4110760000000008");
-    	  $("#accMerchantId").val("M00215");
+     	   }else if (cboText == "Prod"){
+				$("#key").val("09p0tV6I0Zu4ay2D.C9b5Qa3fsizTvkkV3UZdLCifjqjKHIgAzqW6vULFH0D83BNHpA7zW7xVu1xAB857");
+    	  		$("#accBin").val("230358");
+				$("#accMerchantId").val("12345678912003");
+			}else {
+    	  		$("#acctNumber").val("4110760000000008");
+    	  		$("#accMerchantId").val("M00215");
     	  
       }
 	     
@@ -22,8 +26,7 @@
       var keyText = $('#key').val();
       var cboText = $("#enviroment option:selected").text();
       console.log("url values  " +cboText )
-      	
-      
+      	      
       var versioningDataJsonParse = "{}";
  
       var acctNumber = $("#acctNumber").val();
@@ -67,9 +70,8 @@
       }
 
       console.log("urlEnviroment " + urlEnviroment) ;
-
       document.getElementById("versioning").innerHTML = inputVersioning;
-
+      
       var paramsAJAX = {
           type: "POST",
           url: "../cart3dspe/api/versioning",
@@ -278,6 +280,7 @@
 
             var accMerchantId = $("#accMerchantId").val();
             var acctNumber = $("#acctNumber").val();
+			var accBIN = $("#accBIN").val();
 
             pgcqData["messageType"] = "pArq";
             pgcqData["acctNumber"] = acctNumber;// "5449610000000004";
@@ -287,7 +290,7 @@
             pgcqData["messageVersion"] = "2.1.0";
             pgcqData["threeDSRequestorAuthenticationInd"] = "01";
 
-            pgcqData["acquirerBIN"] = "000000999";
+            pgcqData["acquirerBIN"] = accBIN;
             pgcqData["acquirerMerchantID"] = accMerchantId;// "597026007992";
             pgcqData["cardholderName"] = "Challenge One";
             pgcqData["purchaseAmount"] = "100";
